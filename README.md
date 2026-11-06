@@ -11,4 +11,4 @@
 
 | ファイル | URL | 中身 |
 |---|---|---|
-| `obi-test.html` | https://journalrepo-source.github.io/line-entry/obi-test.html | 試験用（2026-11-07）。帯が出ないか・端末に覚えられるか・GAS のサーバーを呼べるか・LIFF で本人が分かるか |
+| `obi-test.html` | https://journalrepo-source.github.io/line-entry/obi-test.html | 試験用（2026-11-07・LIFF「帯テスト（試験用・消してよい）」`2012382315-zCGjdmat`＝ https://liff.line.me/2012382315-zCGjdmat ）。帯が出ないか・端末に覚えられるか・GAS のサーバーを呼べるか・LIFF で本人が分かるか |
