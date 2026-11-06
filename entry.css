@@ -1,0 +1,5 @@
+html, body { margin: 0; height: 100%; background: #f7f7f5; }
+body { font: 16px/1.7 "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; color: #222; }
+iframe#gas { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: transparent; }
+#msg { position: fixed; left: 16px; right: 16px; top: 40%; text-align: center; color: #555; z-index: 0; }
+#msg.err { color: #b3261e; background: #fff; border: 1px solid #e5c8c5; border-radius: 10px; padding: 14px; z-index: 2; }
