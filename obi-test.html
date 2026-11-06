@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>帯テスト</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #fff; }
+  body { display: flex; flex-direction: column; font: 14px sans-serif; color: #222; }
+  #bar { padding: 8px 12px; background: #eef6ee; border-bottom: 1px solid #cdd; line-height: 1.6; }
+  #bar b { font-weight: 700; }
+  iframe { border: 0; width: 100%; flex: 1; display: block; }
+</style>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js" charset="utf-8"></script>
+</head><body>
+<div id="bar"><b>入口ページ（GitHub Pages）</b><div id="liff">④ LINE の本人確認: 確かめています…</div></div>
+<iframe id="f" src="https://script.google.com/macros/s/AKfycbw_vEyaYWrIiGkjt6maXV8PvUmQJ7H-wrYobh024MgTPuWH-PGnLfM7sqZmW_tzavyX/exec" allow="clipboard-write"></iframe>
+<script>
+  // 試験用の LIFF ID（LINE Developers の「支払カレンダー」チャネル 2012382315 の中の試験用 LIFF）。空なら LIFF は試さない
+  var LIFF_ID = "";
+  var out = document.getElementById("liff");
+  function say(s) { out.textContent = "④ LINE の本人確認: " + s; }
+  if (!LIFF_ID) {
+    say("（LIFF ID がまだ無いので試していません）");
+  } else if (!window.liff) {
+    say("❌ LIFF の部品を読み込めませんでした");
+  } else {
+    liff.init({ liffId: LIFF_ID }).then(function () {
+      if (!liff.isLoggedIn()) { say("ログインへ移ります…"); liff.login(); return; }
+      var tok = liff.getIDToken();
+      var d = liff.getDecodedIDToken() || {};
+      say("✅ " + (d.name || "（名前なし）") + " さん（LINE の中: " + (liff.isInClient() ? "はい" : "いいえ") + "・本人の証明 " + (tok ? tok.length + " 文字" : "なし") + "）");
+    }).catch(function (e) { say("❌ " + (e && e.message ? e.message : e)); });
+  }
+</script>
+</body></html>
