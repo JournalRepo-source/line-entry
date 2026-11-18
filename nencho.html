@@ -11,6 +11,8 @@
 <iframe id="gas" name="gas" title="年末調整の申告フォーム"></iframe>
 <script>
   // 年末調整（P10 年調フォーム）。LIFF「年末調整」の行き先。?p=reg（LINE のご登録）だけ窓へ渡す
+  // ?p=nyutai（入退社のご連絡）のときは題名を変える（LIFF がほどく前の liff.state=%3Fp%3Dnyutai の形も見る）
+  try { if (/[?&]p=nyutai(&|$)/.test(decodeURIComponent(location.search))) { document.title = "入退社のご連絡"; document.getElementById("gas").title = "入退社のご連絡のフォーム"; } } catch (e) {}
   window.ENTRY = {
     liffId: "2012382315-21IMiklG",
     gasUrl: "https://script.google.com/macros/s/AKfycbweNyHcqvMqyY8We2iuNZtk3pig4o9-u_lRNPeQz3oPjkYtPmfn1MJo9ERBYj_MSpAZwA/exec",
