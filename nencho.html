@@ -11,8 +11,15 @@
 <iframe id="gas" name="gas" title="年末調整の申告フォーム"></iframe>
 <script>
   // 年末調整（P10 年調フォーム）。LIFF「年末調整」の行き先。?p=reg（LINE のご登録）だけ窓へ渡す
-  // ?p=nyutai（入退社のご連絡）のときは題名を変える（LIFF がほどく前の liff.state=%3Fp%3Dnyutai の形も見る）
-  try { if (/[?&]p=nyutai(&|$)/.test(decodeURIComponent(location.search))) { document.title = "入退社のご連絡"; document.getElementById("gas").title = "入退社のご連絡のフォーム"; } } catch (e) {}
+  // ?p= のページごとに題名を変える＝LINE の画面の上に出る名前（LIFF がほどく前の liff.state=%3Fp%3Dnyutai の形も見る）
+  // nyutai＝入退社のご連絡・henko＝情報変更のご連絡（2026-11-21 下宮さん「情報変更のフォームの上に年末調整と出る」）・reg＝LINE のご登録
+  try {
+    var PAGE_TITLES = { nyutai: "入退社のご連絡", henko: "情報変更のご連絡", reg: "LINE のご登録" };
+    var pm = decodeURIComponent(location.search).match(/[?&]p=([a-z]+)(&|$)/);
+    // 表に無い p（この先足すページで表に足し忘れたとき）は「年末調整」と出さず事務所の名前にする。p が無いときだけ年末調整
+    var pt = pm ? (PAGE_TITLES[pm[1]] || "サン&Journal事務所") : "";
+    if (pt) { document.title = pt; document.getElementById("gas").title = pt + "の画面"; }
+  } catch (e) {}
   window.ENTRY = {
     liffId: "2012382315-21IMiklG",
     gasUrl: "https://script.google.com/macros/s/AKfycbweNyHcqvMqyY8We2iuNZtk3pig4o9-u_lRNPeQz3oPjkYtPmfn1MJo9ERBYj_MSpAZwA/exec",
